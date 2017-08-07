@@ -63,8 +63,8 @@
   .tmzheadtitle{
     flex: 1;
     width: auto;
-    font-size: 24px;
-    margin-top: 4px;
+    font-size: 20px;
+    margin-top: 6px;
     margin-right: 30px;
     margin-left: 50px;
     height: 30px;
