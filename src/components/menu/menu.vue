@@ -4,7 +4,7 @@
       <mu-paper id="mu-paper">
         <mu-bottom-nav :value="bottomNav" shift @change="handleChange" id="mu-bottom-nav">
           <mu-bottom-nav-item value="news" title="新闻" icon="subject"/>
-          <mu-bottom-nav-item value="weather" title="天气" icon="music_note"/>
+          <mu-bottom-nav-item value="weather" title="天气" icon="list"/>
           <mu-bottom-nav-item value="plan" title="计划" icon="list"/>
 
           <mu-bottom-nav-item value="my" title="我的" icon="list"/>
