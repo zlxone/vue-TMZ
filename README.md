@@ -50,7 +50,7 @@ http://59.110.162.201:8080 (推荐谷歌访问)
 
 
 ### 运行效果
-![Image text](https://raw.githubusercontent.com/zlxone/img-folder/master/tmz1.jpg)
+![Image text](https://raw.githubusercontent.com/zlxone/img-folder/master/tmz1.jpg) 
 
 ### 鸣谢
 - Vue
