@@ -28,7 +28,7 @@ git clone https://github.com/zlxone/vue-TMZ.git
 ```
 2.进入项目
 ```
-cd lvyou
+cd vue-TMZ
 ```
 3.安装依赖
 ```
@@ -42,8 +42,11 @@ npm run dev
 ```
 npm run build
 ```
+
+
+
 ### 线上预览
- [线上预览地址](http://59.110.162.201:8080/)
+http://59.110.162.201:8080
 
 
 ### 运行效果
