@@ -27,14 +27,41 @@
         </div>
         <div class="todayinfo">
           <ul >
-            <li>{{weatherinfo1.hourly.time}}</li>
-            <li>{{weatherinfo1.hourly.weather}}</li>
-            <li>{{weatherinfo1.hourly.temp}}</li>
+            <li v-for="tinfo in weatherinfo1.hourly" >
+              <div class="tinfo">
+                <div>{{tinfo.time}}</div>
+                <div>{{tinfo.weather}}</div>
+                <div>{{tinfo.temp}}<span>℃</span></div>
+              </div>
+            </li>
           </ul>
-
         </div>
         <div class="next">
-
+          <ul>
+            <li v-for="ninfo in weatherinfo1.daily" class="ninfo">
+              <div class="nweek">{{ninfo.week}}</div>
+              <div class="nweather">{{ninfo.day.weather}}</div>
+              <div class="nth">{{ninfo.day.temphigh}}</div>
+              <div class="ntl">{{ninfo.night.templow}}</div>
+            </li>
+          </ul>
+        </div>
+        <div class="tdes">
+          今天：当前 {{weatherinfo1.weather}}。气温 {{weatherinfo1.temp}}<span>℃</span>；最高气温 {{weatherinfo1.temphigh}}<span>℃</span>。
+        </div>
+        <div class="otherinfo">
+          <ul>
+            <li>日出：{{weatherinfo1.daily[0].sunrise}}</li>
+            <li>日落：{{weatherinfo1.daily[0].sunset}}</li>
+            <li>湿度：{{weatherinfo1.humidity}}%</li>
+            <li>风速：{{weatherinfo1.winddirect}} 每秒{{weatherinfo1.windspeed}}米</li>
+            <li>气压：{{weatherinfo1.pressure}}百帕</li>
+            <li>PM2.5：{{weatherinfo1.aqi.ipm2_5}}</li>
+            <li>空气质量指数：{{weatherinfo1.aqi.aqi}}</li>
+            <li>空气质量：{{weatherinfo1.aqi.quality}}</li>
+            <li>影响：{{weatherinfo1.aqi.aqiinfo.affect}}</li>
+            <li>建议：{{weatherinfo1.aqi.aqiinfo.measure}}</li>
+          </ul>
         </div>
       </div>
 
@@ -450,10 +477,12 @@
 <style>
 
 .now{
-    border: solid 1px red;
+    /*border: solid 1px red;*/
     height: 220px;
   color: black;
     font-size: 20px;
+  border-bottom: solid gray 1px;
+
 }
 .addr{
   /*border: solid 1px red;*/
@@ -495,7 +524,7 @@
   font-size: 16px;
   float: left;
   margin-top: 40px;
-  margin-left: 20px;
+  margin-left: 16px;
 }
 .t1t2{
   /*border: solid 1px red;*/
@@ -505,16 +534,125 @@
   font-size: 16px;
   float: right;
   margin-top: 40px;
-  margin-right: 20px;
+  margin-right: 16px;
 }
 .todayinfo{
-  border: solid 1px red;
-  height: 120px;
-  color: black;
-  font-size: 120px;
- }
-.next{
-  border: solid 1px red;
-  height: 220px;
+  /*border: solid 1px red;*/
+  height: 100px;
+  width: 100%;
+  border-bottom: solid gray 1px;
+
 }
+.todayinfo ul{
+  height: 100px;
+  list-style-type: none;
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
+  display:flex;
+  -webkit-flex-wrap:nowrap;
+  -ms-flex-wrap:nowrap;
+  flex-wrap:nowrap;
+  -webkit-box-pack:justify;
+  -webkit-justify-content:space-between;
+  -ms-flex-pack:justify;
+  justify-content:space-between;
+  /*background:#FF4878;*/
+  padding:0;
+  overflow:auto;
+}
+.todayinfo ul li{
+  -webkit-box-flex:1;
+  -webkit-flex:1;
+  -ms-flex:1;
+  flex:1;
+  height: 100px;
+  line-height: 100px;
+}
+.tinfo{
+  height: 100px;
+  overflow-x: scroll;
+  overflow-y:hidden ;
+}
+.tinfo div{
+  text-align: center;
+  display: block;
+  width: 3em;
+  color: black;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 10px 6px;
+}
+.tinfo div span{
+  font-size: 10px;
+  color: black;
+}
+
+
+.next{
+  /*border: solid 1px red;*/
+  height: 252px;
+  border-bottom: solid gray 1px;
+}
+.next ul{
+
+}
+.next ul li{
+  height: 36px;
+line-height: 36px;
+  text-decoration: none;
+}
+.ninfo div{
+
+  font-size: 16px;
+  color: black;
+  /*margin: 0 16px;*/
+}
+.nweek{
+  margin-left: 16px;
+}
+.nweather{
+  position: relative;
+  margin-left: 28%;
+  text-align: center;
+}
+.nth{
+  position: absolute;
+  right: 46px;
+}
+.ntl{
+  position: absolute;
+  right: 24px;
+  /*margin-right: 16px;*/
+}
+.tdes{
+  height: 70px;
+  /*border: solid 1px red;*/
+  border-bottom: solid gray 1px;
+  color: black;
+  line-height: 35px;
+  font-size: 20px;
+  text-align: left;
+  padding: 0 16px;
+}
+.tdes span{
+  color: black;
+  font-size: 16px;
+}
+  .otherinfo{
+    height: 200px;
+    /*border: solid 1px red;*/
+  }
+  .otherinfo ul{
+    width: 100%;
+  }
+  .otherinfo ul li{
+    display: block;
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    overflow: auto;
+    text-align: center;
+  }
 </style>
