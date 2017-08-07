@@ -84,4 +84,10 @@
     overflow-y: scroll;
     padding:0 8px;
   }
+
+  ul li{
+    color: black;
+    text-decoration: none;
+    list-style-type: none;
+  }
 </style>
