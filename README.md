@@ -7,7 +7,7 @@
 
 >项目名称：TMZ，使用非常火的vue框架、webpack工具开发。
 >项目描述：第一页面是新闻展示，可下拉刷新，上拉加载，点击新闻列表可查看新闻等，顶部是新闻类型，可选择不同的新闻类型显示不同的新闻列表。
->当然功能还有待完善。
+>天气信息，可以查看当前及一周内的天气情况，通过添加地区显示目的地区的天气信息，仿苹果天气界面。
 
 
 
@@ -50,7 +50,7 @@ http://59.110.162.201:8080 (推荐谷歌访问)
 
 
 ### 运行效果
-![Image text](https://raw.githubusercontent.com/zlxone/img-folder/master/tmz2.jpg) 
+![Image text](https://raw.githubusercontent.com/zlxone/img-folder/master/tmz2.jpg)
 
 ### 鸣谢
 - Vue
