@@ -6,7 +6,7 @@
           <li v-for="news in newslist1">
             <div class="newsimg" @click="getednews(news,$event)">
               <a>
-                <img :src="news.thumbnail_pic_s" lazy_src="news.thumbnail_pic_s">
+                <img :src="news.thumbnailPicS" lazy_src="news.thumbnailPicS">
               </a>
             </div>
             <div class="newsinfo" @click="getednews(news,$event)">
@@ -24,7 +24,7 @@
           <li v-for="news in newslist2">
             <div class="newsimg" @click="getednews(news,$event)">
               <a>
-                <img :src="news.thumbnail_pic_s" lazy_src="news.thumbnail_pic_s">
+                <img :src="news.thumbnailPicS" lazy_src="news.thumbnailPicS">
               </a>
             </div>
             <div class="newsinfo" @click="getednews(news,$event)">
@@ -163,18 +163,18 @@
       },
       onInfinite(done) {
         let vm = this;
-        this.$http.post(url, {"type":this.type}, {emulateJSON: true}).then((data) => {
+        this.$http.post(this.url0, {"type":this.type}, {emulateJSON: true}).then((data) => {
           vm.counter++;
           vm.pageEnd = vm.num * vm.counter;
           vm.pageStart = vm.pageEnd - vm.num;
-          let arr = data.body.data.data;
+          let arr = data.body.data;
           let i = vm.pageStart;
           let end = vm.pageEnd;
           for (; i < end; i++) {
             let obj = {};
             obj = arr[i];
             vm.newslist2.push(obj);
-            if ((i + 1) >= data.body.data.data.length) {
+            if ((i + 1) >= data.body.data.length) {
               this.$el.querySelector('.load-more').style.display = 'none';
               return;
             }
