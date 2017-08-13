@@ -15,8 +15,8 @@
                 <!--<a></a>-->
               </div>
               <div class="newsinfofoot">
-                <div class="newsinfotime">{{news.date}}</div>
-                <div class="newsinfomark"><span>10</span></div>
+                <div class="newsinfotime">{{news.date | formatDate}}</div>
+                <div class="newsinfomark"><span>50</span></div>
               </div>
             </div>
           </li>
@@ -33,8 +33,8 @@
                 <!--<a></a>-->
               </div>
               <div class="newsinfofoot">
-                <div class="newsinfotime">{{news.date}}</div>
-                <div class="newsinfomark"><span>10</span></div>
+                <div class="newsinfotime">{{news.date | formatDate}}</div>
+                <div class="newsinfomark"><span>90</span></div>
               </div>
             </div>
           </li>
@@ -49,13 +49,13 @@
 <script>
   import newsinfo from './newsinfo.vue'
   import refresh from './refresh.vue'
+  import {formatDate} from '../../assets/js/formatDate'
 
   export default {
     data () {
       return {
         getnews: {},
         tsrc: './assets/logo.png',
-//                url: 'http://topTMZ.top:8080/tmz/yundisc/newslist.json',
         url0: 'http://topTMZ.top:8080/tmz/news/list',
         type:"top",
         counter: 1, //默认已经显示出10条数据 count等于一是让从16条开始加载
@@ -100,6 +100,12 @@
       }
     },
     props: ['title'],
+    filters: {
+      formatDate(time) {
+        var date = new Date(time);
+        return formatDate(date, 'yyyy-MM-dd hh:mm');
+      }
+    },
     watch: {
       title: function () {
         console.log("变化 " + this.title)
@@ -136,9 +142,9 @@
         this.$http.post(url, {"type":this.type}, {emulateJSON: true})
           .then(
             (data) => {
-              console.log(data.body.data.data.length+"  "+data);
+              console.log(data);
               this.newslist1 = [];
-              this.newslist1 = data.body.data.data.slice(0, 10);
+              this.newslist1 = data.body.data.slice(0, 10);
             },
             (error) => {
               console.log(error);
