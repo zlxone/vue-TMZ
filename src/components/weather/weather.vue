@@ -72,9 +72,10 @@
     export default {
         data () {
             return {
-                url0:'http://59.110.162.201:8080/tmz/yundisc/w_shanghai.json',
-              weatherinfo:{},
-              weatherinfo1: {
+                url0:'http://topTMZ.top:8080/tmz/weather/info',
+              city:"",
+              weatherinfo1:{},
+              weatherinfo: {
                   "city": "上海",
                   "cityid": "24",
                   "citycode": "101020100",
@@ -459,11 +460,11 @@
       },
       methods: {
         getweather(url){
-          this.$http.post(url, {}, {emulateJSON: true})
+          this.$http.post(url, {"city":"上海"}, {emulateJSON: true})
             .then(
               (data) => {
-                console.log(data.body.result);
-                this.weatherinfo = data.body.result;
+                console.log(data);
+                this.weatherinfo1 = data.body.data;
               },
               (error) => {
                 console.log(error);
