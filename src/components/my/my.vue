@@ -17,7 +17,7 @@
                 </div>
             </div>
           <div class="mynote">
-
+            <textarea></textarea>
           </div>
             <div class="mylist">
                 <ul>
@@ -105,7 +105,12 @@
       height: 110px;
       border: solid 1px red;
     }
-
+    textarea{
+      height: 100%;
+      width: 100%;
+      font-size: 16px;
+      color: black;
+    }
     .mylist{
         border-top:solid 1px black ;
       text-align: center;
