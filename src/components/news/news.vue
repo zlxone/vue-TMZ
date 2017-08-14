@@ -24,7 +24,7 @@
 </template>
 
 <script>
-    import newslist from './newslist.vue'
+    import newslist from './newslist2.vue'
 
 
     export default {
@@ -103,6 +103,8 @@
     overflow:auto;
 }
 .tmzheadtitle ul li{
+  /*border-left: 1px white solid;*/
+  padding-left: 12px;
     -webkit-box-flex:1;
     -webkit-flex:1 0 auto;
     -ms-flex:1 0 auto;
