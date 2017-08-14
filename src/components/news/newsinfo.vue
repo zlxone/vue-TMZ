@@ -3,7 +3,6 @@
     <div class="tmzhead">
       <div class="tmzheadtitle">
         <p>{{news.title}}</p>
-        <!--<p>福建省大放送大佛的事</p>-->
       </div>
     </div>
 
@@ -47,9 +46,7 @@
         this.showflag = false;
       }
     },
-    components: {
-//            back
-    }
+    components: {}
   }
 </script>
 
