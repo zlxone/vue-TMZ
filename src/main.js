@@ -6,13 +6,15 @@ import router from './router'
 import VueResource from 'vue-resource'
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
+import MintUI from 'mint-ui'
+import  'mint-ui/lib/style.css'
 
 
 Vue.config.productionTip = false
 
 Vue.use(VueResource);
 Vue.use(MuseUI)
-
+Vue.use(MintUI)
 
 /* eslint-disable no-new */
 new Vue({
