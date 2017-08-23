@@ -14,16 +14,16 @@
         </div>
         <div class="nowinfo">
           <div class="week">
-            {{weatherinfo1.week}}   今天
+            {{weatherinfo1.week}} 今天
           </div>
           <div class="t1t2">
-            {{weatherinfo1.temphigh}}    {{weatherinfo1.templow}}
+            {{weatherinfo1.temphigh}} {{weatherinfo1.templow}}
           </div>
         </div>
       </div>
       <div class="todayinfo">
-        <ul >
-          <li v-for="tinfo in weatherinfo1.hourly" >
+        <ul>
+          <li v-for="tinfo in weatherinfo1.hourly">
             <div class="tinfo">
               <div>{{tinfo.time}}</div>
               <div>{{tinfo.weather}}</div>
@@ -43,7 +43,8 @@
         </ul>
       </div>
       <div class="tdes">
-        今天：当前 {{weatherinfo1.weather}}。气温 {{weatherinfo1.temp}}<span>℃</span>；最高气温 {{weatherinfo1.temphigh}}<span>℃</span>。
+        今天：当前 {{weatherinfo1.weather}}。气温 {{weatherinfo1.temp}}<span>℃</span>；最高气温
+        {{weatherinfo1.temphigh}}<span>℃</span>。
       </div>
       <div class="otherinfo">
         <ul>
@@ -65,14 +66,14 @@
 </template>
 
 <script>
-  import { Indicator } from 'mint-ui';
+  import {Indicator} from 'mint-ui';
 
   export default {
     data () {
       return {
-        url0:'http://topTMZ.top:8080/tmz/weather/info',
-        city:'上海',
-        weatherinfo1:{},
+        url0: 'http://topTMZ.top:8080/tmz/weather/info',
+        city: '上海',
+        weatherinfo1: {},
         weatherinfo: {
           "city": "",
           "cityid": "",
@@ -169,21 +170,19 @@
               "temp": "",
               "img": ""
             }
-          ]}
+          ]
+        }
       }
     },
-    watch:{
-
-    },
+    watch: {},
     mounted: function () {
       this.getweather(this.url0);
-
     },
     methods: {
-      getweather:function (url) {
+      getweather: function (url) {
         Indicator.open();
-        setTimeout(()=>{
-          this.$http.post(url, {'city':this.city}, {emulateJSON: true})
+        setTimeout(() => {
+          this.$http.post(url, {'city': this.city}, {emulateJSON: true})
             .then(
               (data) => {
                 Indicator.close();
@@ -194,7 +193,7 @@
                 console.log(error);
               }
             );
-        },500)
+        }, 300)
       }
     }
   }
@@ -202,7 +201,7 @@
 
 <style>
 
-  .now{
+  .now {
     /*border: solid 1px red;*/
     height: 220px;
     color: black;
@@ -210,7 +209,8 @@
     border-bottom: solid gray 1px;
 
   }
-  .addr{
+
+  .addr {
     /*border: solid 1px red;*/
     height: 40px;
     margin-top: 20px;
@@ -218,14 +218,16 @@
     color: black;
     font-size: 30px;
   }
-  .winfo{
+
+  .winfo {
     /*border: solid 1px red;*/
     height: 20px;
     line-height: 20px;
     color: black;
     font-size: 16px;
   }
-  .temp{
+
+  .temp {
     /*border: solid 1px red;*/
     height: 80px;
     line-height: 80px;
@@ -233,16 +235,19 @@
     color: black;
     font-size: 80px;
   }
-  .temp span{
+
+  .temp span {
     height: 60px;
     line-height: 60px;
     color: black;
     font-size: 30px;
   }
-  .nowinfo{
 
+  .nowinfo {
+    margin-top: 16px;
   }
-  .week{
+
+  .week {
     /*border: solid 1px red;*/
     height: 16px;
     line-height: 16px;
@@ -252,7 +257,8 @@
     margin-top: 40px;
     margin-left: 16px;
   }
-  .t1t2{
+
+  .t1t2 {
     /*border: solid 1px red;*/
     height: 16px;
     line-height: 16px;
@@ -262,96 +268,117 @@
     margin-top: 40px;
     margin-right: 16px;
   }
-  .todayinfo{
+
+  .todayinfo {
     /*border: solid 1px red;*/
     height: 100px;
     width: 100%;
     border-bottom: solid gray 1px;
 
   }
-  .todayinfo ul{
+
+  .todayinfo ul {
     height: 100px;
     list-style-type: none;
-    display:-webkit-box;
-    display:-webkit-flex;
-    display:-ms-flexbox;
-    display:flex;
-    -webkit-flex-wrap:nowrap;
-    -ms-flex-wrap:nowrap;
-    flex-wrap:nowrap;
-    -webkit-box-pack:justify;
-    -webkit-justify-content:space-between;
-    -ms-flex-pack:justify;
-    justify-content:space-between;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
     /*background:#FF4878;*/
-    padding:0;
-    overflow:auto;
+    padding: 0;
+    overflow: auto;
   }
-  .todayinfo ul li{
-    -webkit-box-flex:1;
-    -webkit-flex:1;
-    -ms-flex:1;
-    flex:1;
+
+  .todayinfo ul li {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
     height: 100px;
     line-height: 100px;
   }
-  .tinfo{
+
+  .tinfo {
     height: 100px;
     overflow-x: scroll;
-    overflow-y:hidden ;
+    overflow-y: hidden;
   }
-  .tinfo div{
+
+  .tinfo div {
     text-align: center;
     display: block;
     width: 3em;
+    height: 20px;
     color: black;
     font-size: 16px;
     line-height: 20px;
     margin: 10px 6px;
   }
-  .tinfo div span{
+
+  .tinfo div span {
     font-size: 10px;
     color: black;
   }
 
+  .tmzbody ul li {
+    display: flex;
+    float: left;
+    /*border: solid 1px red;*/
+    list-style-type: none;
+    width: 100%;
+  }
 
-  .next{
+  .next {
     /*border: solid 1px red;*/
     height: 252px;
     border-bottom: solid gray 1px;
   }
-  .next ul{
+
+  .next ul {
 
   }
-  .next ul li{
+
+  .next ul li {
     height: 36px;
     line-height: 36px;
     text-decoration: none;
   }
-  .ninfo div{
 
+  .ninfo div {
     font-size: 16px;
     color: black;
     /*margin: 0 16px;*/
   }
-  .nweek{
+
+  .nweek {
     margin-left: 16px;
   }
-  .nweather{
+
+  .nweather {
     position: relative;
     margin-left: 28%;
     text-align: center;
   }
-  .nth{
+
+  .nth {
     position: absolute;
     right: 46px;
   }
-  .ntl{
+
+  .ntl {
     position: absolute;
     right: 24px;
     /*margin-right: 16px;*/
   }
-  .tdes{
+
+  .tdes {
     height: 70px;
     /*border: solid 1px red;*/
     border-bottom: solid gray 1px;
@@ -361,18 +388,22 @@
     text-align: left;
     padding: 0 16px;
   }
-  .tdes span{
+
+  .tdes span {
     color: black;
     font-size: 16px;
   }
-  .otherinfo{
+
+  .otherinfo {
     height: 200px;
     /*border: solid 1px red;*/
   }
-  .otherinfo ul{
+
+  .otherinfo ul {
     width: 100%;
   }
-  .otherinfo ul li{
+
+  .otherinfo ul li {
     display: block;
     width: 100%;
     height: 30px;
