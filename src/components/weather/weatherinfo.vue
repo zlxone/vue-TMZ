@@ -358,18 +358,21 @@
   }
 
   .nweek {
-    margin-left: 16px;
+    position: absolute;
+    left: 16px;
   }
 
   .nweather {
     position: relative;
-    margin-left: 28%;
+    /*margin-left: 28%;*/
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
   }
 
   .nth {
     position: absolute;
-    right: 46px;
+    right: 56px;
   }
 
   .ntl {
