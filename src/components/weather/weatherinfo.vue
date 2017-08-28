@@ -1,7 +1,7 @@
 <template>
   <div id="weather">
 
-    <div class="tmzbody">
+    <div class="tmzbody1">
       <div class="now">
         <div class="addr">
           {{weatherinfo1.city}}
@@ -327,11 +327,12 @@
     color: black;
   }
 
-  .tmzbody ul li {
+  .tmzbody1 ul li {
     display: flex;
     float: left;
     /*border: solid 1px red;*/
     list-style-type: none;
+    /*border-bottom: solid 0px white;*/
     width: 100%;
   }
 
