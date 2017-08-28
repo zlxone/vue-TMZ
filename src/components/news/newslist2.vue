@@ -1,8 +1,11 @@
 <template>
   <div>
     <div id="newslist2" class="tmzbody">
-      <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :topPullText="topPullText" :topDropText="topDropText" :topLoadingText="topLoadingText" :bottomDropText="bottomDropText" :bottomLoadingText="bottomLoadingText" :bottomPullText="bottomPullText" :auto-fill="false"  ref="loadmore">
-      <ul>
+      <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded"
+                   :topPullText="topPullText" :topDropText="topDropText" :topLoadingText="topLoadingText"
+                   :bottomDropText="bottomDropText" :bottomLoadingText="bottomLoadingText"
+                   :bottomPullText="bottomPullText" :auto-fill="false" ref="loadmore">
+        <ul>
           <li v-for="news in newslist1">
             <div class="newsimg" @click="getednews(news,$event)">
               <a>
@@ -25,6 +28,7 @@
       </mt-loadmore>
     </div>
     <newsinfo :news="getnews" ref="news"></newsinfo>
+
   </div>
 
 </template>
@@ -32,7 +36,7 @@
 <script>
   import newsinfo from './newsinfo.vue'
   import {formatDate} from '../../assets/js/formatDate'
-  import {Indicator,Loadmore} from 'mint-ui'
+  import {Indicator, Loadmore} from 'mint-ui'
 
   export default {
     data () {
@@ -40,18 +44,18 @@
         getnews: {},
         tsrc: './assets/logo.png',
         url0: 'http://topTMZ.top:8080/tmz/news/list',
-        type:"top",
+        type: "top",
         topStatus: '',
-        pnum0:0,
-        psum0:10,
-        topPullText:'下拉刷新',
-        topDropText:'释放更新',
-        topLoadingText:'加载中...',
-        bottomPullText:'上拉刷新',
-        bottomDropText:'释放更新',
-        bottomLoadingText:'加载中...',
+        pnum0: 0,
+        psum0: 10,
+        topPullText: '下拉刷新',
+        topDropText: '释放更新',
+        topLoadingText: '加载中...',
+        bottomPullText: '上拉刷新',
+        bottomDropText: '释放更新',
+        bottomLoadingText: '加载中...',
         allLoaded: false,
-        scrollMode:"auto", //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
+        scrollMode: "auto", //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
         newslist1: [],
         newslist2: [],//下拉列表
         newslist: [
@@ -99,7 +103,7 @@
     watch: {
       title: function () {
         console.log("变化 " + this.title)
-        this.type=this.title
+        this.type = this.title
 
         /*        this.url0 = 'http://topTMZ.top:8080/tmz/yundisc/';
 
@@ -124,26 +128,26 @@
       this.init(this.url0);
     },
     methods: {
-      init:function(url){
+      init: function (url) {
         this.newslist1 = [];
-        this.pnum0=0;
+        this.pnum0 = 0;
         Indicator.open();
-        setTimeout(()=>{
-          this.getnewslist(url,0);
+        setTimeout(() => {
+          this.getnewslist(url, 0);
           Indicator.close();
-        },1000);
+        }, 500);
       },
-      getnewslist:function (url,pnum) {
-        this.$http.post(url, {"type":this.type,"pnum":pnum,"psum":this.psum0}, {emulateJSON: true})
+      getnewslist: function (url, pnum) {
+        this.$http.post(url, {"type": this.type, "pnum": pnum, "psum": this.psum0}, {emulateJSON: true})
           .then(
             (data) => {
               console.log(data);
-              if(data.body.code===0){
+              if (data.body.code === 0) {
                 this.newslist2 = data.body.data;
                 this.newslist1 = this.newslist1.concat(this.newslist2);
-              }else{
+              } else {
 //                this.allLoaded = true;// 若数据已全部获取完毕
-                  console.log("no data");
+                console.log("no data");
               }
 
             },
@@ -152,24 +156,26 @@
             }
           );
       },
-      getednews:function(news, event){
+      getednews: function (news, event) {
         this.getnews = news;
         this.$refs.news.show();
       },
-      loadTop:function() {         //下拉加载
+      loadTop: function () {         //下拉加载
         console.log(this.pnum0);
         this.init(this.url0);
         this.$refs.loadmore.onTopLoaded();// 固定方法，查询完要调用一次，用于重新定位
       },
-      loadBottom:function() {// 上拉加载
-          this.pnum0+=this.psum0;
-        this.getnewslist(this.url0,this.pnum0);
+      loadBottom: function () {// 上拉加载
+        this.pnum0 += this.psum0;
+        setTimeout(() => {
+          this.getnewslist(this.url0, this.pnum0);
+        }, 300);
         this.$refs.loadmore.onBottomLoaded();// 固定方法，查询完要调用一次，用于重新定位
       }
     },
     components: {
       newsinfo,
-      'mt-loadmore':Loadmore
+      'mt-loadmore': Loadmore
     }
 
   }
@@ -178,20 +184,9 @@
 </script>
 
 <style>
-  /*.tmzbody{*/
-  /*position: absolute;*/
-  /*top: 50px;*/
-  /*left: 0;*/
-  /*bottom: 50px;*/
-  /*width: 100%;*/
-  /*!*margin-bottom: 80px;*!*/
-  /*z-index: 10;*/
-  /*!*border: solid 3px black;*!*/
-  /*overflow-y: scroll;*/
-  /*padding:0 8px;*/
-  /*}*/
 
-  .mint-loadmore-text{
+
+  .mint-loadmore-text {
     color: gray;
     font-size: 16px;
     font-family: "Microsoft Himalaya";
@@ -206,13 +201,7 @@
   .tmzbody ul li {
     display: flex;
     float: left;
-    height: 80px;
-    /*border: solid 1px red;*/
-    line-height: 80px;
-    list-style-type: none;
     border-bottom: solid 1px gainsboro;
-    /*background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#c8c7cc' x='0' y='0' width='100%' height='0.5'/></svg>");*/
-    /*margin: 0 12px;*/
     width: 100%;
   }
 
@@ -246,7 +235,7 @@
     /*border: solid 1px black;*/
     height: 50px;
     /*width: 100%;*/
-    font-size: 20px;
+    /*font-size: 20px;*/
     line-height: 50px;
   }
 
@@ -254,7 +243,7 @@
     height: 50px;
     width: auto;
     font-size: 18px;
-    line-height: 23px;
+    line-height: 25px;
     color: black;
     overflow: hidden;
     text-overflow: ellipsis;
