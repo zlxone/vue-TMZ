@@ -332,7 +332,7 @@
     float: left;
     /*border: solid 1px red;*/
     list-style-type: none;
-    /*border-bottom: solid 0px white;*/
+    border-bottom: none;
     width: 100%;
   }
 
