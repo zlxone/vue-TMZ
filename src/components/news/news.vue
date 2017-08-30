@@ -20,6 +20,8 @@
         </div>
 
 
+
+
     </div>
 </template>
 
@@ -65,6 +67,7 @@
 </script>
 
 <style>
+
 /*.tmzhead{*/
     /*position: fixed;*/
     /*top: 0;*/
@@ -85,7 +88,7 @@
 /*}*/
 
 .tmzheadtitle ul{
-
+  -webkit-overflow-scrolling:touch;
     list-style-type: none;
     display:-webkit-box;
     display:-webkit-flex;
@@ -119,9 +122,10 @@
 
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
 ::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
-    background-color: #7e57c2;
+  display: none;
+    /*width: 0px;*/
+    /*height: 0px;*/
+    /*background-color: rgba(0, 0, 0, 0.2);*/
 }
 
 .tmzheadtitle ul li a {
